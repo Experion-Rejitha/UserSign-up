@@ -1,0 +1,135 @@
+<html>
+    <head>
+            <title>User Details</title>
+            <meta charset="utf-8"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <!-- External js file -->
+            <script type="text/javascript" src="userDetails.js"></script>
+            <!-- External css file-->
+            <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body class="body_udetail">
+        <h1 class="udetail_h1">UserDetails</h1>
+        <div class="container-fluid ">
+            <!-- Personal Information -->
+            <div class="row row1">
+                 <h2 class="udetail_h1">Personal Information</h2>
+             <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-8" >FirstName:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="fname"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-4" >LastName:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="lname"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Email:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="mail"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Phone Number:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="pno"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Gender:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="gen"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Age:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="age"></label>
+                </div>
+             </div>
+        </div>
+
+        <!-- Family Details-->
+        <div class="row row2">
+            <h2 class="udetail_h1">Family Details</h2>
+             <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-4" >Father's Name:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="fa-name"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-4" >Mother'sName:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="ma-name"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Marital status:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="mstatus"></label>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" >Spouse Name:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="sp-name"></label>
+                </div>
+             </div>
+        </div>
+
+        <!-- Professional Details -->
+        <div class="row row3">
+            <h2 class="udetail_h1">Professional Details</h2>
+             <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-8" >Company Name:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="comp-name"></label>
+                </div>
+             </div>
+             <div class="row">
+                <div class=" col-md-4">
+                    <label class="control-label col-md-4" >Designation:</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label col-md-4" id="desig"></label>
+                </div>
+             </div>
+        </div>
+        
+        </div>
+    </body>
+</html>
+        
