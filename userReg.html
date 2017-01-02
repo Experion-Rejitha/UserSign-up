@@ -15,100 +15,106 @@
             <!-- External css file-->
             <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
+    <body class="body_ureg">
         
-<div class="container-fluid body_ureg">
-  <h2 id="reg_h2">Registration</h2><br />
-
-  <!-- User Registration   -->
-
-  <form class="form-horizontal" method="post" >
-    <div class="form-group">
-      <label class="control-label col-md-2" >FirstName:</label>
-      <div class="col-md-8">
-        <input type="text" class="form-control" id="fname" placeholder="Enter valid FirstName" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >LastName:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="lname" placeholder="Enter valid LastName" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >Email:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="email" placeholder="Enter valid Email ID" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >Phone Number:</label>
-      <div class="col-md-8">          
-        <input type="number" class="form-control" id="pno" placeholder="Enter valid Phone Number" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >Gender:</label>
-      <div class="col-md-8">          
-        <input type="radio"  name="gender" value="male" id="gender">Male</input>
-        <input type="radio"  name="gender"id="gender" value="female"  >Female</input> 
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-md-2" >Date of Birth:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" name="date" id="dob"  required>
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-md-2" >Martial Status:</label>
-      <div class="col-md-8">          
-         <select class="form-control" name="mstatus"  required id="status">
-                  <option>--Select--</option>
-                  <option id="single">Single</option>
-                  <option id="married">Married</option>                       
-         </select>
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-md-2" >Father's Name:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="fa_name" placeholder="Enter valid Name" required>
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-md-2" >Mother's Name:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="ma_name" placeholder="Enter valid Name" required>
-      </div>
-    </div>
-    <div class="form-group" id="spouse_hide">
-      <label class="control-label col-md-2" >Spouse Name:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="sp_name" placeholder="Enter valid Name" >
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >Company Name:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="cname" placeholder="Enter valid Name" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-md-2" >Designation:</label>
-      <div class="col-md-8">          
-        <input type="text" class="form-control" id="desig" placeholder="Enter valid Name" required>
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" id="save_btn" >Submit</button>
-        <button type="reset" class="btn btn-success">Reset</button>
-      </div>
-    </div>
-  </form>
-
-</div>
-
+        <div class="container-fluid test1">
+               <h2 id="reg_h2">Registration</h2><br />
+        </div>
+          
+          <!-- User Registration   -->
+          <div class="container-fluid test2">
+                <form class="form-horizontal" method="post" >
+                      <div class="form-group">
+                             <label class="control-label col-md-2" >FirstName<span class="required">*</span>:</label>
+                             <div class="col-md-8">
+                                  <input type="text" class="form-control" id="fname" maxlength="50" placeholder="Enter valid FirstName" required>
+                             </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >LastName<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                  <input type="text" class="form-control" id="lname" maxlength="50" placeholder="Enter valid LastName" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Email<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="text" class="form-control" id="email" maxlength="100" placeholder="Enter valid Email ID" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Phone Number<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="text" class="form-control" id="pno" maxlength="20"  placeholder="Enter valid Phone Number" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Gender<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                <input type="radio"  name="gender" value="male" id="gender">Male</input>
+                                <input type="radio"  name="gender"id="gender" value="female"  >Female</input> 
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Date of Birth<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="date" class="form-control" name="date"  id="dob"  max="2017-1-2" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Image<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="file" name="image_file" id="image_file" multiple accept='image/*'/>
+                              <!--<button id="upload_btn">Upload</button>-->
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Martial Status<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                  <select class="form-control" name="mstatus"  required id="status">
+                                            <option id="single">Single</option>
+                                            <option id="married">Married</option>                       
+                                  </select>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Father's Name<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                  <input type="text" class="form-control" id="fa_name" maxlength="50"  placeholder="Enter valid Father's Name" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Mother's Name<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                  <input type="text" class="form-control" id="ma_name" maxlength="50"  placeholder="Enter valid Mother's Name" required>
+                            </div>
+                      </div>
+                      <div class="form-group" id="spouse_hide">
+                            <label class="control-label col-md-2" >Spouse Name:</label>
+                            <div class="col-md-8">          
+                                 <input type="text" class="form-control" id="sp_name" maxlength="50"  placeholder="Enter valid Spouse Name" >
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Company Name<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="text" class="form-control" id="cname" maxlength="50"  placeholder="Enter valid Company Name" required>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <label class="control-label col-md-2" >Designation<span class="required">*</span>:</label>
+                            <div class="col-md-8">          
+                                 <input type="text" class="form-control" id="desig" maxlength="50"  placeholder="Enter valid Designation" required>
+                            </div>
+                      </div>
+                      <div class="form-group">        
+                            <div class="col-sm-offset-2 col-sm-10">
+                                  <button type="submit" class="btn btn-primary" id="save_btn" >Submit</button>
+                                  <button type="reset" class="btn btn-success">Reset</button>
+                            </div>
+                      </div>
+                </form>
+        </div>
+ 
  </body>
  </html>

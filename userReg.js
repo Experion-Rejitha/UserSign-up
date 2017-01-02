@@ -1,33 +1,47 @@
 
 $(document).ready(function () {
 
-   // datepicker
-      $('#dob').datepicker({
-      format: "dd MM yyyy",
-      autoclose: true,
-      pickerPosition: "bottom-left",
-      todayHighlight: true,
-    });
+   // date validation
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    }
+    if(mm<10){
+        mm='0'+mm
+    }
 
-// Function that hide SpouseName field when marital status is Single
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("dob").setAttribute("max", today);
+
+     $("#spouse_hide").hide();    // Initialy hide spouse field
+
+    // Function that hide SpouseName field when marital status is Single
     $("#status").change(function () {
-        if ($(this).find(':selected').text() === 'Married') {
-            $("#spouse_hide").show();
-        }
-        else if ($(this).find(':selected').text() === 'Single') {
+        if ($(this).find(':selected').text() === 'Single') {
             $("#spouse_hide").hide();
         }
-        else if ($(this).find(':selected').text() === '--Select--') {
-                $("#spouse_hide").hide();
+        else if ($(this).find(':selected').text() === 'Married') {
+            $("#spouse_hide").show();
         }
-        else {
-                $("#spouse_hide").show();
-        }
-    });
 
-// Function for submit button
+     });
+
+     // validation for  image file
+    $('#upload_btn').click(function () {
+
+         var val = $("#image_file").val();
+         if (!val.match(/(?:jpg|png)$/)) {
+             alert("inputted file path is not an image!");
+         }
+     });
+
+    // Function for submit button
     $('#save_btn').click(function (e) {
          e.preventDefault();
+
          var new_gen=$('input[name=gender]:checked').val();
         if ($('#fname').val() == ""){
              alert('Please fill the FirstName field');
@@ -39,9 +53,9 @@ $(document).ready(function () {
             alert('Please fill the email field');
          }
          else if ($('#gender:checked').length === 0)
-        {
+         {
           alert('Please select the gender');
-        }
+         }
          else if ($('#pno').val() == ""){
             alert('Please fill the Number field');
          }
@@ -61,24 +75,58 @@ $(document).ready(function () {
             alert('Please fill the company name field');
          }
          else if ($('#desig').val() == ""){
-            alert('Please fill the gesignation field');
+            alert('Please fill the designation field');
          }
          else {
-                  var new_fname = $('#fname').val();
-                  var new_lname = $('#lname').val();
+
+                var alphabets = /^[a-zA-Z]+$/;
+                var  numbers = /^[0-9]+$/;
+
+                if(!alphabets.test($("#fname").val())){
+                     alert("FirstName can have only alphabets .");
+                }
+                else{
+                    var new_fname = $('#fname').val();
+                }
+                if(!alphabets.test($("#lname").val())){
+                     alert("LastName can have only alphabets .");
+                }
+                else{
+                    var new_lname = $('#lname').val();
+                }
                   var new_email = $('#email').val();
+
                   var new_pno = $('#pno').val();
                   var new_gen=$('input[name=gender]:checked').val();
                   var new_dob = $('#dob').val();
                   var new_mstatus = $('#status').val();
-                  var new_faname = $('#fa_name').val();
-                  var new_maname = $('#ma_name').val();
-                  var new_spname = $('#sp_name').val();
+                  if(!alphabets.test($("#fa_name").val())){
+                     alert("Father's Name can have only alphabets .");
+                      flag3="false";
+                }
+                else{
+                    var new_faname = $('#fa_name').val();
+                 }
+                 if(!alphabets.test($("#ma_name").val())){
+                     alert("Mother's Name can have only alphabets .");
+                }
+                else{
+                     var new_maname = $('#ma_name').val();
+                }
+                if(new_mstatus==='Married')
+                {
+                 if(!alphabets.test($("#sp_name").val())){
+                     alert("Spouse's Name can have only alphabets .");
+                }
+                else{
+                    var new_spname = $('#sp_name').val();
+                }
+                }
                   var new_cname = $('#cname').val();
                   var new_desig = $('#desig').val();
 
                   // Validate email address
-                  if (validateEmail(new_email)) 
+                  if (validateEmail(new_email))
                   {
                         alert('Nice!! your Email is valid, now you can continue..');
                   }
@@ -87,7 +135,7 @@ $(document).ready(function () {
                         e.preventDefault();
                     }
                     //  Function that validates email address through a regular expression.
-                 function validateEmail(new_email) {
+                  function validateEmail(new_email) {
                     var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
                         if (filter.test(new_email)) {
                              return true;
@@ -95,12 +143,13 @@ $(document).ready(function () {
                        else {
                                return false;
                        }
-                 
+
                    }
 
 
                 // Validate Indian phone number
-                  if (validatePhoneno(new_pno)) 
+
+                  if (validatePhoneno(new_pno))
                   {
                         alert('Your phone number is valid, now you can continue..');
                   }
@@ -109,18 +158,18 @@ $(document).ready(function () {
                         e.preventDefault();
                     }
 
-                   function validatePhoneno(new_pno)  
-                        {  
-                             var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;  
+                   function validatePhoneno(new_pno)
+                        {
+                             var phoneno = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
                             if((new_pno.match(phoneno)))
-                                 {  
-                                     return true;  
-                                  }  
-                             else  
-                                  {  
-                                     return false;  
-                                 }  
-                        }  
+                                 {
+                                     return true;
+                                  }
+                             else
+                                  {
+                                     return false;
+                                 }
+                        }
 
                    localStorage.setItem('FirstName',new_fname);
                    localStorage.setItem('LastName',new_lname);
@@ -136,10 +185,12 @@ $(document).ready(function () {
                    localStorage.setItem('Designation',new_desig);
 
                 // Redirect to userDetails.html
-                   window.location.replace("E:/Exam/userDetails.html");
+                 if (validateEmail(new_email) && (validatePhoneno(new_pno)))
+                 {
+                      window.location.replace("E:/Exam/UserSign-up/userDetails.html");
+
+                 }
+
          }
     });
 });
-
-
-
