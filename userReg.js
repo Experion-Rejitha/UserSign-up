@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-
+   
    // date validation
     var today = new Date();
     var dd = today.getDate();
@@ -29,14 +29,31 @@ $(document).ready(function () {
 
      });
 
-     // validation for  image file
-    $('#upload_btn').click(function () {
+     var base64value;
+     var img_flag=1;
+     // Function that convert image into base64 string
+     function readFile() {
 
-         var val = $("#image_file").val();
-         if (!val.match(/(?:jpg|png)$/)) {
+         // validation for  image file
+          var val = $("#image_file").val();
+          if (!val.match(/(?:jpg|png)$/)) {
              alert("inputted file path is not an image!");
+             img_flag=0;
+          }
+        if (this.files && this.files[0]) {
+        var FR= new FileReader();
+        FR.onload = function(e) {
+        document.getElementById("img").src       = e.target.result;
+        document.getElementById("b64").innerHTML = e.target.result;
+        base64value = e.target.result; 
+        // console.log(img.src);
+        };       
+        FR.readAsDataURL( this.files[0] );
          }
-     });
+    }
+    // Set image into div with id image_file
+    document.getElementById("image_file").addEventListener("change", readFile, false);
+
 
     // Function for submit button
     $('#save_btn').click(function (e) {
@@ -81,15 +98,18 @@ $(document).ready(function () {
 
                 var alphabets = /^[a-zA-Z]+$/;
                 var  numbers = /^[0-9]+$/;
+                var flag=1;
 
                 if(!alphabets.test($("#fname").val())){
                      alert("FirstName can have only alphabets .");
+                     flag=0;
                 }
                 else{
                     var new_fname = $('#fname').val();
                 }
                 if(!alphabets.test($("#lname").val())){
                      alert("LastName can have only alphabets .");
+                     flag=0;
                 }
                 else{
                     var new_lname = $('#lname').val();
@@ -102,13 +122,14 @@ $(document).ready(function () {
                   var new_mstatus = $('#status').val();
                   if(!alphabets.test($("#fa_name").val())){
                      alert("Father's Name can have only alphabets .");
-                      flag3="false";
+                      flag=0;
                 }
                 else{
                     var new_faname = $('#fa_name').val();
                  }
                  if(!alphabets.test($("#ma_name").val())){
                      alert("Mother's Name can have only alphabets .");
+                     flag=0;
                 }
                 else{
                      var new_maname = $('#ma_name').val();
@@ -117,6 +138,7 @@ $(document).ready(function () {
                 {
                  if(!alphabets.test($("#sp_name").val())){
                      alert("Spouse's Name can have only alphabets .");
+                     flag=0;
                 }
                 else{
                     var new_spname = $('#sp_name').val();
@@ -177,6 +199,7 @@ $(document).ready(function () {
                    localStorage.setItem('Phno',new_pno);
                    localStorage.setItem('Gender',new_gen);
                    localStorage.setItem('DOB',new_dob);
+                   localStorage.setItem('base64string',base64value);
                    localStorage.setItem('Mstatus',new_mstatus);
                    localStorage.setItem('FatherName',new_faname);
                    localStorage.setItem('MotherName',new_maname);
@@ -185,7 +208,7 @@ $(document).ready(function () {
                    localStorage.setItem('Designation',new_desig);
 
                 // Redirect to userDetails.html
-                 if (validateEmail(new_email) && (validatePhoneno(new_pno)))
+                 if (validateEmail(new_email) && (validatePhoneno(new_pno)) && flag==1 )
                  {
                       window.location.replace("E:/Exam/UserSign-up/userDetails.html");
 
