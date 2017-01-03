@@ -15,7 +15,7 @@ $(document).ready(function () {
     var spname=(localStorage.getItem('SpouseName'));
     var cname=(localStorage.getItem('CName'));
     var desig=(localStorage.getItem('Designation'));
-
+    var image = localStorage.getItem("base64string");
 
      var newDate = (localStorage.getItem('DOB'));
      var age;
@@ -41,6 +41,9 @@ $(document).ready(function () {
     }
   
     // set values to the html element
+
+   
+    document.getElementById("profile_img").src= image;
     $("#fname").text(fname);
     $("#lname").text(lname);
     $("#mail").text(mail);

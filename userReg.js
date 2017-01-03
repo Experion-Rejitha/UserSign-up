@@ -16,6 +16,15 @@ $(document).ready(function () {
     today = yyyy+'-'+mm+'-'+dd;
     document.getElementById("dob").setAttribute("max", today);
 
+    // Initialy hide alert message
+    $("#p_fname").hide(); 
+    $("#p_lname").hide(); 
+    $("#p_email").hide(); 
+    $("#p_pno").hide(); 
+    $("#p_faname").hide();
+    $("#p_mname").hide(); 
+    $("#p_spname").hide();  
+
      $("#spouse_hide").hide();    // Initialy hide spouse field
 
     // Function that hide SpouseName field when marital status is Single
@@ -29,24 +38,23 @@ $(document).ready(function () {
 
      });
 
-     var base64value;
+     var image;
      var img_flag=1;
      // Function that convert image into base64 string
      function readFile() {
 
          // validation for  image file
-          var val = $("#image_file").val();
-          if (!val.match(/(?:jpg|png)$/)) {
-             alert("inputted file path is not an image!");
-             img_flag=0;
-          }
+        //   var val = $("#image_file").val();
+        //   if (!val.match(/(?:jpg|png)$/)) {
+        //      alert("inputted file path is not an image!");
+        //      img_flag=0;
+        //   }
         if (this.files && this.files[0]) {
         var FR= new FileReader();
         FR.onload = function(e) {
         document.getElementById("img").src       = e.target.result;
-        document.getElementById("b64").innerHTML = e.target.result;
-        base64value = e.target.result; 
-        // console.log(img.src);
+        image = e.target.result; 
+        localStorage.setItem('base64string',image);
         };       
         FR.readAsDataURL( this.files[0] );
          }
@@ -101,18 +109,20 @@ $(document).ready(function () {
                 var flag=1;
 
                 if(!alphabets.test($("#fname").val())){
-                     alert("FirstName can have only alphabets .");
+                     $("#p_fname").show(); 
                      flag=0;
                 }
                 else{
                     var new_fname = $('#fname').val();
+                     $("#p_fname").hide(); 
                 }
                 if(!alphabets.test($("#lname").val())){
-                     alert("LastName can have only alphabets .");
+                      $("#p_lname").show(); 
                      flag=0;
                 }
                 else{
                     var new_lname = $('#lname').val();
+                     $("#p_lname").hide();
                 }
                   var new_email = $('#email').val();
 
@@ -121,41 +131,44 @@ $(document).ready(function () {
                   var new_dob = $('#dob').val();
                   var new_mstatus = $('#status').val();
                   if(!alphabets.test($("#fa_name").val())){
-                     alert("Father's Name can have only alphabets .");
+                      $("#p_faname").show(); 
                       flag=0;
                 }
                 else{
                     var new_faname = $('#fa_name').val();
+                    $("#p_faname").hide(); 
                  }
                  if(!alphabets.test($("#ma_name").val())){
-                     alert("Mother's Name can have only alphabets .");
+                      $("#p_mname").show(); 
                      flag=0;
                 }
                 else{
                      var new_maname = $('#ma_name').val();
+                     $("#p_mname").hide(); 
                 }
                 if(new_mstatus==='Married')
                 {
                  if(!alphabets.test($("#sp_name").val())){
-                     alert("Spouse's Name can have only alphabets .");
+                      $("#p_spname").show(); 
                      flag=0;
                 }
                 else{
                     var new_spname = $('#sp_name').val();
+                     $("#p_spname").hide(); 
                 }
                 }
                   var new_cname = $('#cname').val();
                   var new_desig = $('#desig').val();
 
                   // Validate email address
-                  if (validateEmail(new_email))
+                  if (!validateEmail(new_email))
                   {
-                        alert('Nice!! your Email is valid, now you can continue..');
-                  }
-                 else{
-                        alert('Invalid Email Address');
+                         $("#p_email").show(); 
                         e.preventDefault();
-                    }
+                  }
+                  else{
+                       $("#p_email").hide();
+                  }
                     //  Function that validates email address through a regular expression.
                   function validateEmail(new_email) {
                     var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
@@ -171,13 +184,13 @@ $(document).ready(function () {
 
                 // Validate Indian phone number
 
-                  if (validatePhoneno(new_pno))
+                  if (!validatePhoneno(new_pno))
                   {
-                        alert('Your phone number is valid, now you can continue..');
-                  }
-                 else{
-                        alert('Invalid Phone Number');
+                         $("#p_pno").show(); 
                         e.preventDefault();
+                    }
+                    else{
+                         $("#p_pno").hide(); 
                     }
 
                    function validatePhoneno(new_pno)
@@ -199,7 +212,7 @@ $(document).ready(function () {
                    localStorage.setItem('Phno',new_pno);
                    localStorage.setItem('Gender',new_gen);
                    localStorage.setItem('DOB',new_dob);
-                   localStorage.setItem('base64string',base64value);
+                //    localStorage.setItem('base64string',basevalue);
                    localStorage.setItem('Mstatus',new_mstatus);
                    localStorage.setItem('FatherName',new_faname);
                    localStorage.setItem('MotherName',new_maname);
@@ -210,7 +223,7 @@ $(document).ready(function () {
                 // Redirect to userDetails.html
                  if (validateEmail(new_email) && (validatePhoneno(new_pno)) && flag==1 )
                  {
-                      window.location.replace("E:/Exam/UserSign-up/userDetails.html");
+                      window.location.replace("./userDetails.html");
 
                  }
 
